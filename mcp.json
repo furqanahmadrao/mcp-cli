@@ -1,0 +1,12 @@
+{
+    "version": "1.0.0",
+    "servers": [
+        {
+            "name": "simple",
+            "type": "stdio",
+            "command": "node",
+            "args": ["tests/simple-server.js"],
+            "timeout": 30000
+        }
+    ]
+}

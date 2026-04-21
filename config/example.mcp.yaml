@@ -1,0 +1,31 @@
+version: "1.0.0"
+
+servers:
+  - name: local
+    type: stdio
+    command: node server.js
+    timeout: 30000
+
+  - name: filesystem
+    type: stdio
+    command: node
+    args:
+      - ./servers/filesystem.js
+    timeout: 30000
+
+  - name: api
+    type: http
+    url: http://localhost:3000/mcp
+    auth:
+      type: bearer
+      token: ${API_TOKEN}
+    timeout: 30000
+
+profiles:
+  dev:
+    servers:
+      - local
+      - filesystem
+  prod:
+    servers:
+      - api
